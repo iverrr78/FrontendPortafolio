@@ -1,0 +1,129 @@
+:root{
+    --main-bg-color:#2C3E50;
+    --second-bg-color: #0A192F;
+    --main-text-color: #D0D3D4;
+    --second-text-color: #F4D03F;
+    --card-color: #FFFFFF;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.vertical-menu {
+    position: fixed;
+        display: flex;
+        flex-direction: column;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 200px;
+        background-color: #333;
+        transition: transform 0.3s ease-in-out;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        z-index: 100;
+  }
+  
+.show {
+    transform: translateX(0);
+  }
+
+.menu-items {
+    padding-top: 50px;
+    list-style: none;
+  }
+
+.adminblogcontainer{
+    display: flex;
+    flex-flow: column;
+    gap: 20px
+}
+
+.admincard{
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--card-color);
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+}
+
+.admincard div{
+    display: flex;
+    flex-flow: row;
+    gap: 10px;
+}
+
+.adminform{
+    display: flex;
+    flex-flow: column;
+    width: 800px;
+    margin-left: 300px;
+    min-height: 100%;
+}
+.adminform input{
+    margin-bottom: 100px;
+}
+
+.inputname{
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+.inputtext{
+    height: 600px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+.hamburger2{
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: fixed;
+    left: 20px;
+    top: 45px;
+    z-index: 200;
+}
+
+.change .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.change .bar:nth-child(2) {
+    transform: scaleX(0);
+}
+
+.change .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.hidden2{
+    transform: translateX(-100%);
+}
+.visible2{
+    transform: translateX(0%);
+}
+
+.show{
+    transform: translateX(0);
+}
