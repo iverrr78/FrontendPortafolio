@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import useMyContext from '../hooks/useAuth.js';
 
+dotenv.config()
+
+const SERVER_URL = process.env.SERVER_URL;
+
 function AdminStacks(){
     const navigate = useNavigate();
     const {auth} = useMyContext();
@@ -15,7 +19,7 @@ function AdminStacks(){
         }
         const funcion = async () =>{
             try{
-            const response = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/stack/getAll");
+            const response = await axios.get(`${SERVER_URL}/stack/getAll`);
             setStacks(response.data);
             }
             catch(err){
@@ -38,7 +42,7 @@ function AdminStacks(){
         };
 
         try{
-             await axios.delete("https://backend-portafolio-605db99b2585.herokuapp.com/stack/deleteById", config)
+             await axios.delete(`${SERVER_URL}/stack/deleteById`, config)
         }catch(err){
             console.log(err);
         }

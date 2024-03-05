@@ -40,7 +40,8 @@ function AdminCreateCategory(){
                 'name': name,
             }]
             console.log(newcategory);
-            await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/category/post", newcategory, config);
+            //await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/category/post", newcategory, config);
+            await axios.post("http://localhost:3001/category/post", newcategory, config);
         }
         else if(slug == ':update'){
             const newcategory = [{
@@ -52,7 +53,8 @@ function AdminCreateCategory(){
             }
 
             console.log(Number.isInteger(queryParams.id[0]));
-            await axios.patch("https://backend-portafolio-605db99b2585.herokuapp.com/category/update", newcategory, config, {params: queryParams});
+            //await axios.patch("https://backend-portafolio-605db99b2585.herokuapp.com/category/update", newcategory, config, {params: queryParams});
+            await axios.patch("http://localhost:3001/category/update", newcategory, config, {params: queryParams});
         }
     }
 

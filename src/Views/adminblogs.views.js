@@ -17,8 +17,8 @@ function AdminBlog(){
     React.useEffect(() => {
         const funcion = async () =>{
             try{
-            const response = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/blog/getAll");
-            console.log(response.data);
+            //const response = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/blog/getAll");
+            const response = await axios.get("http://localhost:3001/blog/getAll");
             setBlogs(response.data);
             }
             catch(err){
@@ -28,24 +28,28 @@ function AdminBlog(){
         funcion();
       }, []);
 
-      const handleDelete = async (event)=>{
+      const handleDelete = async (element, index)=>{
+
+        const blog = element;
 
         const config = {
             headers: {
                 'Authorization': `Bearer ${auth}`
             },
             params: {
-                id: event.target.id
+                id: blog.id,
+                previousimagename: blog.imagename
             }
         };
 
         try{
-             await axios.delete("https://backend-portafolio-605db99b2585.herokuapp.com/blog/deleteById", config)
+             //await axios.delete("https://backend-portafolio-605db99b2585.herokuapp.com/blog/deleteById", config)
+             await axios.delete("http://localhost:3001/blog/deleteById", config)
         }catch(err){
             console.log(err);
         }
 
-        const newblogs = blogs.map((element)=>(element.id != event.target.key));
+        const newblogs = blogs.map((element1)=>(element1.id != index));
         setBlogs(newblogs);
       }
 
@@ -57,7 +61,7 @@ function AdminBlog(){
                 <h1>Blogs:</h1>
                 <div>
                     <ul className="adminblogcontainer">
-                        {blogs.map((element,index)=>(<li key={index} className="admincard"><p>{element.spanish_name}</p><div><button onClick={handleDelete} style={{border:'none'}}><img id={element.id} src='https://img.icons8.com/ios-glyphs/30/trash--v1.png' width="30" height="30"/></button><Link to="/admin/admincreateblog/:update" state={element} style={{textDecoration:'none', color:'black'}}><button style={{border:'none'}}><img src='https://img.icons8.com/ios-glyphs/30/edit--v1.png'/></button></Link></div></li>))}
+                        {blogs.map((element,index)=>(<li key={index} className="admincard"><p>{element.spanish_name}</p><div><button onClick={()=>handleDelete(element, index)} style={{border:'none'}}><img id={element.id} src='https://img.icons8.com/ios-glyphs/30/trash--v1.png' width="30" height="30"/></button><Link to="/admin/admincreateblog/:update" state={element} style={{textDecoration:'none', color:'black'}}><button style={{border:'none'}}><img src='https://img.icons8.com/ios-glyphs/30/edit--v1.png'/></button></Link></div></li>))}
                     </ul>
                 </div>
                 <Link to='/admin/admincreateblog/create' className="boton" style={{textDecoration: 'none', color:'black', paddingLeft:'10px', marginLeft:'650px'}} state={{english_name:'',english_text:'', spanish_name: '', spanish_descritpion: '', categoryIds:[]}}>Crear nuevo blog</Link>

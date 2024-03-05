@@ -1,83 +1,83 @@
 *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .modal{
-    background: rgba(32,35,41,0.8);
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: -10px;
-    bottom: -10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: rgba(32,35,41,0.8);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: -10px;
+  bottom: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .popup{
-    position: fixed;
-    width: 700px;
-    height: 550px;
-    border-radius: 20px;
-    background-color: whitesmoke;
-    z-index: 2;
+  position: fixed;
+  width: 700px;
+  height: 550px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  z-index: 2;
 }
 
 .popup img{
-    object-fit: cover;
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 5px 5px 0 0;
-    margin-bottom: 10px;
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 5px 5px 0 0;
+  margin-bottom: 10px;
 }
 
 .close-button {
-    width: 20px;
-    height: 20px;
-    position: relative;
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
 }
 
 .close-button::before,
 .close-button::after {
-  content: '';
-  position: absolute;
-  width: 2px;
-  height: 100%;
-  top: 0;
-  left: 50%;
-  background-color: black; /* Adjust the color as needed */
-  transform: translateX(-50%);
+content: '';
+position: absolute;
+width: 2px;
+height: 100%;
+top: 0;
+left: 50%;
+background-color: white; /* Adjust the color as needed */
+transform: translateX(-50%);
 }
 
 .close-button::before {
-  transform: translateX(-50%) rotate(45deg);
+transform: translateX(-50%) rotate(45deg);
 }
 
 .close-button::after {
-  transform: translateX(-50%) rotate(-45deg);
+transform: translateX(-50%) rotate(-45deg);
 }
 
 @media (max-width:768px){
-  .popup{
-    position: fixed;
-    width: 350px;
-    height: 550px;
-    border-radius: 20px;
-    background-color: whitesmoke;
-    z-index: 2;
-    margin-right: 20px;
+.popup{
+  position: fixed;
+  width: 350px;
+  height: 550px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  z-index: 2;
+  margin-right: 20px;
 }
 
 .popup img{
-    object-fit: cover;
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 5px 5px 0 0;
-    margin-bottom: 10px;
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 5px 5px 0 0;
+  margin-bottom: 10px;
 }
 }

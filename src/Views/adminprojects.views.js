@@ -5,6 +5,10 @@ import { useNavigate } from "react-router";
 import useMyContext from '../hooks/useAuth.js';
 import '../Styles/StylesAdmin.css';
 
+dotenv.config()
+
+const SERVER_URL = process.env.SERVER_URL;
+
 function AdminProjects(){
     const navigate = useNavigate();
     const {auth} = useMyContext()
@@ -16,8 +20,8 @@ function AdminProjects(){
         }
         const funcion = async () =>{
             try{
-            const projects1 = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/project/getAll");
-            console.log(projects1);
+            const projects1 = await axios.get(`${SERVER_URL}/project/getAll`);
+            console.log("projects:", projects1);
             setProjects(projects1.data);
             }
             catch(err){
@@ -27,25 +31,31 @@ function AdminProjects(){
         funcion();
       }, []);
 
-      const handleDelete = async (event)=>{
-        console.log(event.target.id);
+      const handleDelete = async (element, index)=>{
+        console.log("hola que tal");
+        console.log("id:",element.id);
+        console.log("auth:", auth);
+        
+        const project = element;
+        console.log("image", project.imagename);
 
         const config = {
             headers: {
                 'Authorization': `Bearer ${auth}`
             },
             params: {
-                id: event.target.id
+                id: project.id,
+                previousimagename: project.imagename
             }
         };
 
         try{
-             await axios.delete("https://backend-portafolio-605db99b2585.herokuapp.com/project/delete", config)
+             await axios.delete(`${SERVER_URL}/project/delete`, config)
         }catch(err){
             console.log(err);
         }
 
-        const newprojects = projects.map((element)=>(element.id != event.target.key));
+        const newprojects = projects.map((element1)=>(element1.id != index));
         setProjects(newprojects);
       }
 
@@ -56,7 +66,7 @@ function AdminProjects(){
                 <h1>Projects:</h1>
                 <div>
                     <ul className="adminblogcontainer">
-                        {projects.map((element, index)=>(<li key={index} className="admincard"><p>{element.name_spanish}</p><div><button style={{border:'none'}} onClick={handleDelete}><img id = {element.id} src='https://img.icons8.com/ios-glyphs/30/trash--v1.png'/></button><Link to="/admin/admincreateproject/:update" state={element}><button style={{border:'none'}}><img src='https://img.icons8.com/ios-glyphs/30/edit--v1.png'/></button></Link></div></li>))}
+                        {projects.map((element, index)=>(<li key={index} className="admincard"><p>{element.name_spanish}</p><div><button style={{border:'none'}} onClick={()=>handleDelete(element, index)}><img id = {element.id} src='https://img.icons8.com/ios-glyphs/30/trash--v1.png'/></button><Link to="/admin/admincreateproject/:update" state={element}><button style={{border:'none'}}><img src='https://img.icons8.com/ios-glyphs/30/edit--v1.png'/></button></Link></div></li>))}
                     </ul>
                 </div>
                 <Link to='/admin/admincreateproject/create' className="boton" style={{textDecoration: 'none', color:'black', paddingLeft:'10px', marginLeft:'650px'}} state={{english_name:'',english_text:'', spanish_name: '', spanish_descritpion: '', categoryIds:[], stackIds:[]}}>Crear nuevo proyecto</Link>

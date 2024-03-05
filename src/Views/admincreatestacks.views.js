@@ -5,6 +5,10 @@ import { useNavigate } from "react-router";
 import useMyContext from '../hooks/useAuth.js';
 import '../Styles/StylesAdmin.css';
 
+dotenv.config()
+
+const SERVER_URL = process.env.SERVER_URL;
+
 function AdminCreateStacks(){
     const Location = useLocation();
     const navigate = useNavigate();
@@ -40,7 +44,7 @@ function AdminCreateStacks(){
                 'name': name,
             };
             console.log('token', auth);
-            await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/stack/post", newstack, config);
+            await axios.post(`${SERVER_URL}/stack/post`, newstack, config);
         }
         else if(slug == ':update'){
             const newstack = [{
@@ -52,7 +56,7 @@ function AdminCreateStacks(){
             }
 
             console.log(Number.isInteger(queryParams.id[0]));
-            await axios.patch("https://backend-portafolio-605db99b2585.herokuapp.com/stack/update", config, newstack, {params: queryParams});
+            await axios.patch(`${SERVER_URL}/stack/update`, config, newstack, {params: queryParams});
         }
     }
 

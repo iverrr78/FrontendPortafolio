@@ -15,7 +15,8 @@ function AdminCategories(){
         }
         const funcion = async () =>{
             try{
-            const response = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/category/getAll");
+            //const response = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/category/getAll");
+            const response = await axios.get("https://localhost:3001/category/getAll");
             setCategories(response.data);
             }
             catch(err){
@@ -37,7 +38,8 @@ function AdminCategories(){
         };
 
         try{
-             await axios.delete("https://backend-portafolio-605db99b2585.herokuapp.com/blog/deleteById", config)
+             //await axios.delete("https://backend-portafolio-605db99b2585.herokuapp.com/blog/deleteById", config)
+             await axios.delete("https://localhost:3001/blog/deleteById", config)
         }catch(err){
             console.log(err);
         }

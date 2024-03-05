@@ -25,7 +25,8 @@ function AdminCreateBlog(){
         }
         const funcioncategories = async () =>{
             try{
-            const newcategories = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/category/getAll");
+            //const newcategories = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/category/getAll");
+            const newcategories = await axios.get("http://localhost:3001/category/getAll");
             setCategories(newcategories.data);
             }
             catch(err){
@@ -102,7 +103,8 @@ function AdminCreateBlog(){
             }
 
             formData.append('body', JSON.stringify(newblog));
-            await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/blog/post", newblog, config);
+            //await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/blog/post", newblog, config);
+            await axios.post("http://localhost:3001/blog/post", formData, config);
         }
         else if(slug == ':update'){
             const newblog = {
@@ -123,7 +125,8 @@ function AdminCreateBlog(){
             }
 
             formData.append('body', JSON.stringify(newblog));
-            await axios.patch("https://backend-portafolio-605db99b2585.herokuapp.com/blog/update", newblog, config);
+            //await axios.patch("https://backend-portafolio-605db99b2585.herokuapp.com/blog/update", newblog, config);
+            await axios.patch("http://localhost:3001/blog/update", formData, config);
         }
         //event.preventDefault();
     }

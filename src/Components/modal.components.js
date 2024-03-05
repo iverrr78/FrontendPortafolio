@@ -29,6 +29,7 @@ function Popup(props){
         return(
             <div className='popup'>
                 <div onClick={props.function} className='close-button' style={{position:'absolute', right:'15px', marginTop:'10px', width:'30px',height:'30px', borden:'none'}}></div>
+                <img src={props.data.imageurl} alt="weed"/>
                 <div style={{paddingLeft:'30px'}}>
                 <p style={{margin:0, fontWeight:'bold'}}>bitcoin</p>                
                 <div style={{height:'60px'}}>
@@ -63,7 +64,8 @@ function Popup(props){
         return(
             <div className='popup'>
                 <div onClick={props.function} className='close-button' style={{position:'absolute', right:'15px', marginTop:'10px', width:'30px',height:'30px', borden:'none'}}></div>
-                <div style={{paddingLeft:'30px', paddingTop:'50px', paddingBottom: '50px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}>
+                <img src={props.data.imageurl} alt="weed"/>
+                <div style={{paddingLeft:'30px'}}>
                 <div style={{height:'60px'}}>
                     <p style={{margin:0, fontWeight:'bold'}}>Categorias:</p>
                     <div style={{display: 'flex', justifyContent:'space-between', width:'600px'}}>

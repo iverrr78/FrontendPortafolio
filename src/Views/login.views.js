@@ -4,6 +4,10 @@ import axios from "axios";
 import '../Styles/StylesLogIn.css'
 import { useNavigate } from "react-router";
 
+dotenv.config()
+
+const SERVER_URL = process.env.SERVER_URL;
+
 function LogIn(){
     const {setAuth, auth} = useAuth();
     const [password, setPassword] = React.useState();
@@ -21,7 +25,8 @@ function LogIn(){
                 username: "hola",
                 password: password
             }
-            const response = await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/auth/", request);
+            const response = await axios.post(`${SERVER_URL}/auth/`, request);
+
             const accestoken = response.data.token;
             setAuth(accestoken);
             navigate('/admin/')

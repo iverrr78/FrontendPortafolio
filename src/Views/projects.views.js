@@ -7,6 +7,10 @@ import { Modal } from "../Components/modal.components.js";
 import useMyContext from "../hooks/useAuth";
 import axios from 'axios';
 
+dotenv.config()
+
+const SERVER_URL = process.env.SERVER_URL;
+
 //const hola = [1,2,3,4,5,6,7,8];
 function Projects(){
     const {language} = useMyContext();
@@ -20,24 +24,27 @@ function Projects(){
 
     React.useEffect(() => {
         setTimeout(async () => {
-            const projects1 = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/project/GetAll");
+            const projects1 = await axios.get(`${SERVER_URL}/project/GetAll`);
+            console.log("projects:", projects1);
 
             setProjects(projects1.data)
             setNewProjects(projects1.data);
-            const newcategories = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/category/getAll");
+            const newcategories = await axios.get(`${SERVER_URL}/category/getAll`);
             const categories2 = newcategories.data.map((element)=>({
                 id: element.id,
                 name: element.name,
                 status: false,
             }));
+            console.log("categories:",categories2);
 
             setCategories(categories2);
-            const newstacks = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/stack/getAll", {headers:{api:123}});
+            const newstacks = await axios.get(`${SERVER_URL}/stack/getAll`);
             const stacks2 = newstacks.data.map((element)=>({
                 id: element.id,
                 name: element.name,
                 status: false
             }));
+            console.log("stack:", stacks2);
 
             setStacks(stacks2);
         }, 4000);
@@ -94,6 +101,7 @@ function Projects(){
     }
 
     const handleModal = (element)=>{
+        console.log("element",element);
         setCurrentProject(element);
         setModal(true);
     }

@@ -7,6 +7,10 @@ import { categories, data } from "../Data/Data";
 import useMyContext from "../hooks/useAuth";
 import axios from 'axios';
 
+dotenv.config()
+
+const SERVER_URL = process.env.SERVER_URL;
+
 function Blog(){
     const {language} = useMyContext();
     const [categories, setCategories] = React.useState(null);
@@ -18,10 +22,10 @@ function Blog(){
 
     React.useEffect(() => {
         setTimeout(async () => {
-            const blogs1 = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/blog/getAll");
+            const blogs1 = await axios.get(`${SERVER_URL}/blog/getAll`);
             setBlogs(blogs1.data);
             setNewBlogs(blogs1.data);
-            const newcategories = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/category/getAll");
+            const newcategories = await axios.get(`${SERVER_URL}/category/getAll`);
             const categories2 = newcategories.data.map((element)=>({
                 id: element.id,
                 name: element.name,

@@ -2,10 +2,11 @@ import React, {useEffect} from "react";
 import { Link, Outlet } from 'react-router-dom';
 
 function Card(props){
-    console.log("language", props.language);
+    //console.log("language", props.language);
+    console.log("data", props.data);
     return(
         <div className="card2" onClick={props.function} data={props.data}>
-            <img src={props.data.image} alt="image"/>
+            <img src={props.data.imageurl} alt="image"/>
             <h4>{props.language ? (props.data.englis_name || props.data.name_english) : (props.data.name_spanish || props.data.spanish_name)}</h4>
         </div>
     )

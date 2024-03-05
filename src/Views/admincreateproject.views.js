@@ -30,9 +30,12 @@ function AdminCreateProjects(){
         }
         const funcioncategories = async () =>{
             try{
-            const newcategories = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/category/getAll");
+            //const newcategories = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/category/getAll");
+            const newcategories = await axios.get("http://localhost:3001/category/getAll");
             setCategories(newcategories.data);
-            const newstacks = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/stack/getAll", {headers:{api: 123}});
+            setCategories(newcategories.data);
+            //const newstacks = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/stack/getAll", {headers:{api: 123}});
+            const newstacks = await axios.get("http://localhost:3001/stack/getAll", {headers:{api: 123}});
             setStacks(newstacks.data);
             }
             catch(err){
@@ -141,7 +144,8 @@ function AdminCreateProjects(){
             }
 
             formData.append('body', JSON.stringify(newproject));
-            await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/project/post", newproject, config);
+            //await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/project/post", newproject, config);
+            await axios.post("http://localhost:3001/project/post", formData, config);
         }
         else if(slug == ':update'){
             const newproject = {
@@ -167,9 +171,11 @@ function AdminCreateProjects(){
             formData.append('body', JSON.stringify(newproject));
 
             //console.log(Number.isInteger(queryParams.id[0]));
-            await axios.patch("https://backend-portafolio-605db99b2585.herokuapp.com/project/update", newproject, config);
+            //await axios.patch("https://backend-portafolio-605db99b2585.herokuapp.com/project/update", newproject, config);
+            await axios.patch("http://localhost:3001/project/update", formData, config);
         }
-    }
+        }
+    
 
     return(
         <div className="main2">
