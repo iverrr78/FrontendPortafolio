@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useLocation, useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import useMyContext from '../hooks/useAuth.js';
+import dotenv from 'dotenv';
 import '../Styles/StylesAdmin.css';
 
 function AdminCreateBlog(){
@@ -17,6 +18,10 @@ function AdminCreateBlog(){
     const [categorieschecked, setCategorieschecked] = React.useState([]);
     const [selectedFile, setSelectedFile] = React.useState(null);
 
+    dotenv.config()
+
+    const SERVER_URL = process.env.SERVER_URL;
+
     const {slug} = useParams();
 
     useEffect(()=>{
@@ -25,8 +30,7 @@ function AdminCreateBlog(){
         }
         const funcioncategories = async () =>{
             try{
-            //const newcategories = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/category/getAll");
-            const newcategories = await axios.get("http://localhost:3001/category/getAll");
+            const newcategories = await axios.get(`${SERVER_URL}/category/getAll`);
             setCategories(newcategories.data);
             }
             catch(err){
@@ -103,8 +107,7 @@ function AdminCreateBlog(){
             }
 
             formData.append('body', JSON.stringify(newblog));
-            //await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/blog/post", newblog, config);
-            await axios.post("http://localhost:3001/blog/post", formData, config);
+            await axios.post(`${SERVER_URL}/blog/post`, formData, config);
         }
         else if(slug == ':update'){
             const newblog = {
@@ -125,14 +128,9 @@ function AdminCreateBlog(){
             }
 
             formData.append('body', JSON.stringify(newblog));
-            //await axios.patch("https://backend-portafolio-605db99b2585.herokuapp.com/blog/update", newblog, config);
-            await axios.patch("http://localhost:3001/blog/update", formData, config);
+            await axios.patch(`${SERVER_URL}/blog/update`, formData, config);
         }
-        //event.preventDefault();
     }
-
-    //console.log(name);
-    //console.log('ids',Location.state.Categories);
 
     return(
         <div className="main2" style={{minHeigth:'100%'}}>

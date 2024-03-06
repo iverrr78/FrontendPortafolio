@@ -3,7 +3,12 @@ import axios from 'axios';
 import { useLocation, useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import useMyContext from '../hooks/useAuth.js';
+import dotenv from 'dotenv';
 import '../Styles/StylesAdmin.css';
+
+dotenv.config()
+
+const SERVER_URL = process.env.SERVER_URL;
 
 function AdminCreateCategory(){
     const Location = useLocation();
@@ -40,8 +45,7 @@ function AdminCreateCategory(){
                 'name': name,
             }]
             console.log(newcategory);
-            //await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/category/post", newcategory, config);
-            await axios.post("http://localhost:3001/category/post", newcategory, config);
+            await axios.post(`${SERVER_URL}/category/post`, newcategory, config);
         }
         else if(slug == ':update'){
             const newcategory = [{
@@ -53,8 +57,7 @@ function AdminCreateCategory(){
             }
 
             console.log(Number.isInteger(queryParams.id[0]));
-            //await axios.patch("https://backend-portafolio-605db99b2585.herokuapp.com/category/update", newcategory, config, {params: queryParams});
-            await axios.patch("http://localhost:3001/category/update", newcategory, config, {params: queryParams});
+            await axios.patch( `${SERVER_URL}/category/update`, newcategory, config, {params: queryParams});
         }
     }
 

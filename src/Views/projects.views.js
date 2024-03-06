@@ -11,7 +11,6 @@ dotenv.config()
 
 const SERVER_URL = process.env.SERVER_URL;
 
-//const hola = [1,2,3,4,5,6,7,8];
 function Projects(){
     const {language} = useMyContext();
     const [modal, setModal] = React.useState(false);

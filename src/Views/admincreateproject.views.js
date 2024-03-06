@@ -3,7 +3,12 @@ import axios from 'axios';
 import { useLocation, useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import useMyContext from '../hooks/useAuth.js';
+import dotenv from 'dotenv';
 import '../Styles/StylesAdmin.css';
+
+dotenv.config()
+
+const SERVER_URL = process.env.SERVER_URL;
 
 function AdminCreateProjects(){
     const Location = useLocation();
@@ -30,12 +35,10 @@ function AdminCreateProjects(){
         }
         const funcioncategories = async () =>{
             try{
-            //const newcategories = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/category/getAll");
-            const newcategories = await axios.get("http://localhost:3001/category/getAll");
+            const newcategories = await axios.get(`${SERVER_URL}/category/getAll`);
             setCategories(newcategories.data);
             setCategories(newcategories.data);
-            //const newstacks = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/stack/getAll", {headers:{api: 123}});
-            const newstacks = await axios.get("http://localhost:3001/stack/getAll", {headers:{api: 123}});
+            const newstacks = await axios.get(`${SERVER_URL}/stack/getAll`, {headers:{api: 123}});
             setStacks(newstacks.data);
             }
             catch(err){
@@ -144,8 +147,7 @@ function AdminCreateProjects(){
             }
 
             formData.append('body', JSON.stringify(newproject));
-            //await axios.post("https://backend-portafolio-605db99b2585.herokuapp.com/project/post", newproject, config);
-            await axios.post("http://localhost:3001/project/post", formData, config);
+            await axios.post(`${SERVER_URL}/project/post`, formData, config);
         }
         else if(slug == ':update'){
             const newproject = {
@@ -170,9 +172,7 @@ function AdminCreateProjects(){
 
             formData.append('body', JSON.stringify(newproject));
 
-            //console.log(Number.isInteger(queryParams.id[0]));
-            //await axios.patch("https://backend-portafolio-605db99b2585.herokuapp.com/project/update", newproject, config);
-            await axios.patch("http://localhost:3001/project/update", formData, config);
+            await axios.patch(`${SERVER_URL}/project/update`, formData, config);
         }
         }
     

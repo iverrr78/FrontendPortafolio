@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useLocation, useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import useMyContext from '../hooks/useAuth.js';
+import dotenv from 'dotenv';
 import '../Styles/StylesAdmin.css';
 
 dotenv.config()
