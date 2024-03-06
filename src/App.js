@@ -16,10 +16,8 @@ import { NavbarAdmin } from './Components/navbaradmin.components';
 import { AdminCreateProjects } from './Views/admincreateproject.views';
 import {AdminCreateStacks} from './Views/admincreatestacks.views';
 import { AdminCreateCategory } from './Views/admincreatecategory.views';
-import useMyContext from './hooks/useAuth';
 
 function App() {
-  const {auth, MyContext} = useMyContext()
 
   return (
     <BrowserRouter>

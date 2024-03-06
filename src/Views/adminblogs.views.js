@@ -3,7 +3,12 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import { useNavigate } from "react-router";
 import useMyContext from '../hooks/useAuth.js';
+import dotenv from 'dotenv';
 import '../Styles/StylesAdmin.css';
+
+dotenv.config()
+
+const SERVER_URL = process.env.SERVER_URL;
 
 function AdminBlog(){
     const navigate = useNavigate();
@@ -17,8 +22,7 @@ function AdminBlog(){
     React.useEffect(() => {
         const funcion = async () =>{
             try{
-            //const response = await axios.get("https://backend-portafolio-605db99b2585.herokuapp.com/blog/getAll");
-            const response = await axios.get("http://localhost:3001/blog/getAll");
+            const response = await axios.get(`${SERVER_URL}/blog/getAll`);
             setBlogs(response.data);
             }
             catch(err){
@@ -43,8 +47,7 @@ function AdminBlog(){
         };
 
         try{
-             //await axios.delete("https://backend-portafolio-605db99b2585.herokuapp.com/blog/deleteById", config)
-             await axios.delete("http://localhost:3001/blog/deleteById", config)
+             await axios.delete(`${SERVER_URL}/blog/deleteById`, config)
         }catch(err){
             console.log(err);
         }
