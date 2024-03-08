@@ -5,6 +5,7 @@ import { CardContainer } from "../Components/cardcontainer.components.js";
 import {useNavigate} from 'react-router-dom';
 import { categories, data } from "../Data/Data";
 import useMyContext from "../hooks/useAuth";
+import dotenv from "dotenv";
 import axios from 'axios';
 
 dotenv.config()

@@ -5,6 +5,7 @@ import {Toogle} from '../Components/toogle.components.js';
 import { CardContainer } from "../Components/cardcontainer.components.js";
 import { Modal } from "../Components/modal.components.js";
 import useMyContext from "../hooks/useAuth";
+import dotenv from "dotenv";
 import axios from 'axios';
 
 dotenv.config()
