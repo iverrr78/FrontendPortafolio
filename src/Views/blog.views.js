@@ -5,10 +5,10 @@ import { CardContainer } from "../Components/cardcontainer.components.js";
 import {useNavigate} from 'react-router-dom';
 import { categories, data } from "../Data/Data";
 import useMyContext from "../hooks/useAuth";
-import dotenv from "dotenv";
+//import dotenv from "dotenv";
 import axios from 'axios';
 
-dotenv.config()
+//dotenv.config()
 
 //const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 const SERVER_URL = "https://backend-portafolio-605db99b2585.herokuapp.com";

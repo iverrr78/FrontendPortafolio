@@ -3,9 +3,9 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import '../Styles/StylesLogIn.css'
 import { useNavigate } from "react-router";
-import dotenv from "dotenv";
+//import dotenv from "dotenv";
 
-dotenv.config()
+//dotenv.config()
 
 //const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 const SERVER_URL = "https://backend-portafolio-605db99b2585.herokuapp.com"

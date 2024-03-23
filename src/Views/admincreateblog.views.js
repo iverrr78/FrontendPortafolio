@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useLocation, useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import useMyContext from '../hooks/useAuth.js';
-import dotenv from 'dotenv';
+//import dotenv from 'dotenv';
 import '../Styles/StylesAdmin.css';
 
 function AdminCreateBlog(){
@@ -18,7 +18,7 @@ function AdminCreateBlog(){
     const [categorieschecked, setCategorieschecked] = React.useState([]);
     const [selectedFile, setSelectedFile] = React.useState(null);
 
-    dotenv.config()
+    //dotenv.config()
 
     //const SERVER_URL = process.env.REACT_APP_SERVER_URL;
     const SERVER_URL = "https://backend-portafolio-605db99b2585.herokuapp.com";
