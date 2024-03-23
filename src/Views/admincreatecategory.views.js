@@ -8,7 +8,8 @@ import '../Styles/StylesAdmin.css';
 
 dotenv.config()
 
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+//const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const SERVER_URL = "https://backend-portafolio-605db99b2585.herokuapp.com";
 
 function AdminCreateCategory(){
     const Location = useLocation();
